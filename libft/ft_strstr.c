@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 12:21:39 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/01 13:58:15 by dsousa           ###   ########.fr       */
+/*   Created: 2014/04/28 16:41:03 by rbenjami          #+#    #+#             */
+/*   Updated: 2014/05/03 16:11:06 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ char	*ft_strstr(const char *str, const char *find)
 			return (cp);
 		cp++;
 	}
-	return (NULL);
+	return (0);
 }

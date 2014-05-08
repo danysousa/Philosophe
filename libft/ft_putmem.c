@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strequ.c                                        :+:      :+:    :+:   */
+/*   ft_putmem.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 12:21:39 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/01 13:47:36 by dsousa           ###   ########.fr       */
+/*   Created: 2014/05/01 12:48:53 by rbenjami          #+#    #+#             */
+/*   Updated: 2014/05/06 14:55:24 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strequ(char const *s1, char const *s2)
+void	ft_putmem(void *adr)
 {
-	if (s1 != NULL && s2 != NULL)
-	{
-		if (!ft_strcmp(s1, s2))
-			return (1);
-	}
-	return (0);
+	write(1, "0x", 2);
+	ft_putnbr_base((size_t)adr, 16);
 }

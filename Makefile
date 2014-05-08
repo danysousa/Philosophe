@@ -3,38 +3,40 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
+#    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/02/26 13:13:47 by dsousa            #+#    #+#              #
-#    Updated: 2014/05/06 18:15:21 by dsousa           ###   ########.fr        #
+#    Created: 2014/02/26 13:13:47 by rbenjami          #+#    #+#              #
+#    Updated: 2014/05/06 16:59:18 by rbenjami         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include		libft/Makefile.sources
 
-export	CC		=	clang
+export	CC		=	cc
 
 export	INC		=	-I $(PWD)/libft
 
-NAME			=	philo
+NAME		=	philo
 
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 
-INC				+=	-I includes
+INC			+=	-I includes
 
-SRC_DIR			=	srcs/
+HEAD		=	includes/$(NAME).h
 
-FILES			=	main.c
+SRC_DIR		=	srcs/
 
-SRC				=	$(addprefix $(SRC_DIR), $(FILES))
+FILES		=	$(NAME).c
 
-OBJ				=	$(SRC:.c=.o)
+SRC			=	$(addprefix $(SRC_DIR), $(FILES))
 
-LIB				=	-L./ -lft
+OBJ			=	$(SRC:.c=.o)
 
-OBJ_LIB			=	$(libft/SRC_LIB:.c=.o)
+LIB			=	-L./ -lft -ltermcap
 
-HEAD_LIB		=	libft/libft.h libft/get_next_line.h libft/define_type.h
+OBJ_LIB		=	$(libft/SRC_LIB:.c=.o)
+
+HEAD_LIB	=	libft/libft.h
 
 all:			libft.a $(NAME)
 
@@ -42,26 +44,24 @@ libft.a:		libft/$(OBJ_LIB) $(HEAD_LIB)
 	@make -C libft
 
 $(NAME):		$(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIB)
+	@$(CC) $(CFLAGS) -ltermcap -o $(NAME) $(OBJ) $(LIB)
 	@echo ""
 	@echo "\033[33m"compilation of $(NAME) : "\033[32m"Success"\033[0m"
 
-$(OBJ):			libft.a
+$(OBJ):			$(HEAD) libft.a
 
-%.o:			%.c
+%.o:			%.c $(HEAD)
 	@echo -n .
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 clean:
 	@/bin/rm -f $(OBJ)
 	@echo "\033[31m"Objects of $(NAME) : deleted"\033[0m"
-	@make clean -C libft
 
 fclean:			clean
 	@/bin/rm -f $(NAME)
 	@echo "\033[31m"$(NAME) : deleted"\033[0m"
 	@make fclean -C libft
-
 re:				fclean all
 
 .PHONY:			all clean fclean re

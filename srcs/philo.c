@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/01 12:32:42 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/07 18:45:51 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 12:01:06 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
 #include <semaphore.h>
 #include <time.h>
-#include "test.h"
-#include "libft.h"
+#include <libft.h>
+#include "philo.h"
 
 pthread_mutex_t chopstick[NB_PHIL];
 static void		(*tb_fct[3])(t_data *) = {&rest, &think, &eat};
@@ -81,9 +80,7 @@ int		choose_action(t_data *data)
 void	*func(void *p_data)
 {
 	t_data			*data;
-	int				x;
 
-	x = 0;
 	data = p_data;
 	tb_fct[choose_action(data)](data);
 	return (NULL);
@@ -93,13 +90,13 @@ void	print_philo(t_data *data)
 {
 	static char		tb[3][6] = {"dors ", "pense", "mange"};
 
-	printf("Le philosophe %d %s avec %d PV ", data->n, tb[data->action], data->life);
+	ft_printf("Le philosophe %d %s avec %d PV ", data->n, tb[data->action], data->life);
 	if (data->action == EAT)
-		printf(" | |\n");
+		ft_printf(" | |\n");
 	else if (data->action == THINK)
-		printf(" |\n");
+		ft_printf(" |\n");
 	else
-		printf("\n");
+		ft_printf("\n");
 }
 
 void	*change_pv(void *p_data)
@@ -115,7 +112,7 @@ void	*change_pv(void *p_data)
 		tmp = p_data;
 		((t_data *)tmp)->shared->warning_pv = MAX_LIFE;
 		i = 0;
-		printf("\033[H\033[J");
+		ft_printf("\033[H\033[J");
 		while (i < NB_PHIL)
 		{
 			if (((t_data *)tmp)->action != EAT)
@@ -129,8 +126,8 @@ void	*change_pv(void *p_data)
 			tmp += sizeof(t_data);
 			i++;
 		}
-		printf("%ld\n", start_time + TIMEOUT - time(NULL));
-		printf("-----\n");
+		ft_printf("%d\n", start_time + TIMEOUT - time(NULL));
+		ft_printf("-----\n");
 	}
 	exit(0);
 	return (NULL);
@@ -144,9 +141,7 @@ int		main()
 	t_shared	shared;
 	int		i;
 	int		k;
-	int		x;
 
-	x = 0;
 	shared.warning_pv = MAX_LIFE;
 	shared.warning_nb = 1;
 	for(i = 0; i < NB_PHIL; i++)
@@ -154,7 +149,7 @@ int		main()
 		k=pthread_mutex_init(&chopstick[i],NULL);
 		if(k==-1)
 		{
-			printf("\n Mutex initialization failed");
+			ft_printf("\n Mutex initialization failed");
 			exit(1);
 		}
 	}
@@ -167,7 +162,7 @@ int		main()
 		k = pthread_create(&philosopher[i],NULL, func, &data[i]);
 		if(k!=0)
 		{
-			printf("\n Thread creation error \n");
+			ft_printf("\n Thread creation error \n");
 			exit(1);
 		}
 	}
@@ -177,7 +172,7 @@ int		main()
 		k=pthread_join(philosopher[i], NULL);
 		if(k!=0)
 		{
-			printf("\n Thread join failed \n");
+			ft_printf("\n Thread join failed \n");
 			exit(1);
 		}
 	}
@@ -187,7 +182,7 @@ int		main()
 		k=pthread_mutex_destroy(&chopstick[i]);
 		if(k!=0)
 		{
-			printf("\n Mutex Destroyed \n");
+			ft_printf("\n Mutex Destroyed \n");
 			exit(1);
 		}
 	}
