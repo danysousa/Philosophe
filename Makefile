@@ -6,7 +6,7 @@
 #    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/26 13:13:47 by rbenjami          #+#    #+#              #
-#    Updated: 2014/05/08 12:36:38 by dsousa           ###   ########.fr        #
+#    Updated: 2014/05/08 13:22:32 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,10 @@ HEAD		=	includes/$(NAME).h
 
 SRC_DIR		=	srcs/
 
-FILES		=	$(NAME).c\
-				action.c
+FILES		=	$(NAME).c \
+				action.c \
+				pv.c \
+				thread.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(FILES))
 
