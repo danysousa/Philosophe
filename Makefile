@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
+#    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/26 13:13:47 by rbenjami          #+#    #+#              #
-#    Updated: 2014/05/06 16:59:18 by rbenjami         ###   ########.fr        #
+#    Updated: 2014/05/08 12:36:38 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include		libft/Makefile.sources
 
-export	CC		=	cc
+export	CC		=	clang
 
 export	INC		=	-I $(PWD)/libft
 
@@ -26,7 +26,8 @@ HEAD		=	includes/$(NAME).h
 
 SRC_DIR		=	srcs/
 
-FILES		=	$(NAME).c
+FILES		=	$(NAME).c\
+				action.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(FILES))
 
