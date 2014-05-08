@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/01 12:33:55 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 14:13:51 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 17:43:12 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define THINK_T 2
 # define TIMEOUT 1000
 # define IS_BUSY 16
+# define WAITING 3
 # define EAT 2
 # define THINK 1
 # define REST 0
@@ -32,6 +33,7 @@
 void	rest(t_data *data);
 void	think(t_data *data);
 void	eat(t_data *data);
+void	waiting(t_data *data);
 int		choose_action(t_data *data);
 
 /*

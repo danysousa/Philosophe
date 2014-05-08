@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 13:22:22 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 13:38:50 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 17:50:08 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	create_phil(pthread_t phil[], t_shared *shared, t_data data[])
 		data[i].life = MAX_LIFE;
 		data[i].n = i;
 		data[i].stick = -42;
+		data[i].action = -42;
 		if (pthread_create(&phil[i], NULL, func, &data[i]) != 0)
 		{
 			ft_printf("\n Thread creation failed \n");

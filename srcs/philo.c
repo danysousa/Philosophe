@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/01 12:32:42 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 13:54:51 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 17:37:25 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	init_shared(t_shared *shared)
 	int		i;
 
 	i = 0;
-	shared->warning_pv = MAX_LIFE;
-	shared->warning_nb = 1;
+	shared->warning_pv[0] = MAX_LIFE;
+	shared->warning_nb[0] = 1;
 	while (i < NB_PHIL)
 	{
 		if (pthread_mutex_init(&(shared->stick[i]), NULL) == -1)
