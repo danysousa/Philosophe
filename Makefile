@@ -6,7 +6,7 @@
 #    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/26 13:13:47 by rbenjami          #+#    #+#              #
-#    Updated: 2014/05/08 13:22:32 by dsousa           ###   ########.fr        #
+#    Updated: 2014/05/08 14:13:13 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,12 @@ CFLAGS	= -Wall -Wextra -Werror -g
 
 INC			+=	-I includes
 
-HEAD		=	includes/$(NAME).h
+INC_DIR		=	includes/
+
+INC_FILES	=	$(NAME).h\
+				struct.h
+
+INC_SRC			=	$(addprefix $(INC_DIR), $(INC_FILES))
 
 SRC_DIR		=	srcs/
 
@@ -51,9 +56,9 @@ $(NAME):		$(OBJ)
 	@echo ""
 	@echo "\033[33m"compilation of $(NAME) : "\033[32m"Success"\033[0m"
 
-$(OBJ):			$(HEAD) libft.a
+$(OBJ):			$(INC_SRC) libft.a
 
-%.o:			%.c $(HEAD)
+%.o:			%.c $(INC_SRC)
 	@echo -n .
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 

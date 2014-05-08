@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/28 16:27:32 by rbenjami          #+#    #+#             */
-/*   Updated: 2014/05/06 15:14:16 by rbenjami         ###   ########.fr       */
+/*   Updated: 2014/05/08 14:15:33 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <unistd.h>
 
 /*
- *	COLOR
- */
+**	COLOR
+*/
 # define ANSI_COLOR_RED     "\x1b[31m"
 # define ANSI_COLOR_GREEN   "\x1b[32m"
 # define ANSI_COLOR_YELLOW  "\x1b[33m"
@@ -27,8 +27,8 @@
 # define ANSI_COLOR_RESET   "\x1b[0m"
 
 /*
- *	BASE
- */
+**	BASE
+*/
 # define BINARY 2
 # define TRINARY 3
 # define OCTAL 8
