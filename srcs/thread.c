@@ -6,12 +6,11 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 13:22:22 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 14:19:21 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 13:38:50 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-#include <stdlib.h>
 #include "philo.h"
 
 void	create_phil(pthread_t phil[], t_shared *shared, t_data data[])

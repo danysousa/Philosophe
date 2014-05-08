@@ -6,13 +6,13 @@
 #    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/26 13:13:47 by rbenjami          #+#    #+#              #
-#    Updated: 2014/05/08 14:20:00 by dsousa           ###   ########.fr        #
+#    Updated: 2014/05/08 14:13:13 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include		libft/Makefile.sources
 
-export	CC		=	gcc
+export	CC		=	clang
 
 export	INC		=	-I $(PWD)/libft
 
