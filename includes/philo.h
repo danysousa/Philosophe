@@ -6,12 +6,13 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/01 12:33:55 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 13:38:00 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 13:57:36 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEST_H
-# define TEST_H
+#ifndef PHILO_H
+# define PHILO_H
+
 # define NB_PHIL 7
 # define MAX_LIFE 20
 # define EAT_T 3
@@ -23,7 +24,7 @@
 # define THINK 1
 # define REST 0
 
-#include <pthread.h>
+# include <pthread.h>
 
 typedef struct			s_shared
 {
@@ -46,6 +47,7 @@ typedef struct			s_phil
 	pthread_t			thread;
 	t_data				data;
 }						t_phil;
+
 /*
 **	action
 */
