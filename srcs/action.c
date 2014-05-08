@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 12:33:44 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 18:15:40 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 18:38:21 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,36 @@ void	waiting(t_data *data)
 	tb_fct[choose_action(data)](data);
 }
 
-int		choose_action(t_data *data)
+int		save_friend(t_data *data)
 {
-	int		nb_action;
 	int		prev;
 	int		next;
 	int		tmp;
 
 	tmp = data->shared->warning_nb[0];
+	if (data->n == data->shared->warning_nb[1] || data->n == tmp)
+		return (42);
+	tmp = data->shared->warning_nb[0];
 	prev = tmp - 1 == (-1) ? 6 : tmp - 1;
-	next = (data->shared->warning_nb[0] + 1) % 7;
-	nb_action = REST;
+	next = (tmp + 1) % 7;
 	if (data->n == next || data->n == prev)
+		return (REST);
+	tmp = data->shared->warning_nb[1];
+	prev = tmp - 1 == (-1) ? 6 : tmp - 1;
+	next = (tmp + 1) % 7;
+	if (data->n == next || data->n == prev)
+		return (REST);
+	else
+		return (42);
+}
+
+int		choose_action(t_data *data)
+{
+	int		nb_action;
+	int		tmp;
+
+	nb_action = REST;
+	if (save_friend(data) == REST)
 	{
 		nb_action = data->action == REST ? WAITING : nb_action;
 		return (nb_action);

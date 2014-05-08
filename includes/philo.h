@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/01 12:33:55 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 18:16:03 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 18:41:12 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define PHILO_H
 
 # define NB_PHIL 7
-# define MAX_LIFE 11
-# define EAT_T 1
+# define MAX_LIFE 15
+# define EAT_T 3
 # define REST_T 1
 # define THINK_T 1
-# define TIMEOUT 16
+# define TIMEOUT 60
 # define IS_BUSY 16
 # define WAITING 3
 # define EAT 2
