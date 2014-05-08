@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 13:12:29 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 17:59:02 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 18:09:59 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static void		apply_change_pv(t_data *data, int i)
 	if (data->action != EAT)
 		data->life -= 1;
 	print_philo(data);
+	if (data->life <= 0)
+		while (1);
 	tmp = data->life;
 	if (tmp <= data->shared->warning_pv[0] && tmp <= data->shared->warning_pv[1]
 		&& data->action != EAT)
@@ -73,6 +75,7 @@ void			*change_pv(void *p_data)
 		}
 		ft_printf("%d\n-----\n", start_time + TIMEOUT - time(NULL));
 	}
+	ft_printf("Now, it is time... To DAAAAAAAANCE !!!\n");
 	exit(0);
 	return (NULL);
 }

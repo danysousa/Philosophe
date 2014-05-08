@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 12:33:44 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 17:48:39 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 18:15:40 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	think(t_data *data)
 	static void		(*tb_fct[4])(t_data *) = {&rest, &think, &eat, &waiting};
 
 	data->action = THINK;
-	sleep(THINK_T);
 	pthread_mutex_unlock(&(data->shared->stick[data->stick]));
+	sleep(THINK_T);
 	tb_fct[choose_action(data)](data);
 }
 
