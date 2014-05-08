@@ -6,12 +6,13 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 13:12:29 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 13:21:21 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 14:19:35 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include <time.h>
+#include <stdlib.h>
 #include "philo.h"
 
 static void		print_philo(t_data *data)

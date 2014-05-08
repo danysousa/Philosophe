@@ -6,12 +6,11 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/01 12:32:42 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 13:54:51 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 14:18:09 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <semaphore.h>
 #include <libft.h>
 #include "philo.h"
 
