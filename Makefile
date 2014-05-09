@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+         #
+#    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/26 13:13:47 by rbenjami          #+#    #+#              #
-#    Updated: 2014/05/09 13:39:50 by rbenjami         ###   ########.fr        #
+#    Updated: 2014/05/09 17:29:58 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,9 @@ FILES		=	$(NAME).c \
 				action.c \
 				pv.c \
 				thread.c \
-				textures.c
+				textures.c \
+				save_friend.c \
+				clear.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(FILES))
 

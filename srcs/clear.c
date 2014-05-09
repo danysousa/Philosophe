@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/19 12:21:39 by rbenjami          #+#    #+#             */
-/*   Updated: 2014/05/09 17:30:50 by dsousa           ###   ########.fr       */
+/*   Created: 2014/05/09 17:17:31 by dsousa            #+#    #+#             */
+/*   Updated: 2014/05/09 17:21:00 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
-char	*ft_strnew(size_t size)
+void	clear_win(t_env *env)
 {
-	char	*str;
-
-	str = (char *)ft_memalloc(size + 1);
-	return (str);
+	mlx_clear_window(env->mlx, env->win);
 }

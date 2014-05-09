@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pv.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 13:12:29 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/09 16:47:35 by rbenjami         ###   ########.fr       */
+/*   Updated: 2014/05/09 17:29:55 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,19 @@ static void		print_philo(t_data *data)
 static void		display_philo(t_data *data)
 {
 	t_env			*e;
-	static char		tb[6][7] = {"dors", "pense", "mange", "attend", "mort", "dance"};
-	static char		name[7][8] = {"Roger", "Francis", "Auguste", "Marcus", "Bernard", "Bruce", "George"};
+	static char		tb[6][7] = {TB_ACTION};
+	static char		name[7][8] = {TB_NAME};
 
 	e = data->shared->env;
-	mlx_put_image_to_window(e->mlx, e->win, e->textures[data->action].img, 128 * data->n, 10);
+	mlx_put_image_to_window(e->mlx, e->win, e->textures[data->action].img, \
+		128 * data->n, 10);
 	mlx_string_put(e->mlx, e->win, 128 * data->n, 150, 0xFFFFFF, name[data->n]);
 	mlx_string_put(e->mlx, e->win, 128 * data->n, 170, 0xFFFFFF, "-PV: ");
-	mlx_string_put(e->mlx, e->win, 40 + 128 * data->n, 170, 0xFFFFFF, ft_itoa(data->life));
+	mlx_string_put(e->mlx, e->win, 40 + 128 * data->n, 170, 0xFFFFFF, \
+		ft_itoa(data->life));
 	mlx_string_put(e->mlx, e->win, 128 * data->n, 185, 0xFFFFFF, "-Action: ");
-	mlx_string_put(e->mlx, e->win, 60 + 128 * data->n, 185, 0xFFFFFF, tb[data->action]);
-}
-
-static void		clear_win(t_env *env)
-{
-	mlx_clear_window(env->mlx, env->win);
+	mlx_string_put(e->mlx, e->win, 60 + 128 * data->n, 185, 0xFFFFFF, \
+		tb[data->action]);
 }
 
 static void		apply_change_pv(t_data *data, int i)
@@ -76,6 +74,35 @@ static void		apply_change_pv(t_data *data, int i)
 	}
 }
 
+static void		quit_program(void *p_data)
+{
+	void	*tmp;
+	int		i;
+	t_env	*e;
+
+	tmp = p_data;
+	i = 0;
+	e = ((t_data *)tmp)->shared->env;
+	mlx_clear_window(e->mlx, e->win);
+	if (!((t_data *)p_data)->shared->death)
+	{
+		mlx_string_put(e->mlx, e->win, 350, 200, 0xFFFFFF, DANCE);
+		ft_printf("%s\n", DANCE);
+	}
+	destroy_stick(((t_data *)tmp)->shared->stick);
+	while (i < NB_PHIL)
+	{
+		if (!((t_data *)p_data)->shared->death)
+			((t_data *)tmp)->action = 5;
+		print_philo((t_data *)tmp);
+		display_philo((t_data *)tmp);
+		tmp += sizeof(t_data);
+		i++;
+	}
+	mlx_loop(((t_data *)p_data)->shared->env->mlx);
+	exit(0);
+}
+
 void			*change_pv(void *p_data)
 {
 	void			*tmp;
@@ -83,7 +110,8 @@ void			*change_pv(void *p_data)
 	int				start_time;
 
 	start_time = time(NULL);
-	while (time(NULL) < start_time + TIMEOUT && !((t_data *)p_data)->shared->death)
+	while (time(NULL) < start_time + TIMEOUT
+		&& !((t_data *)p_data)->shared->death)
 	{
 		sleep(1);
 		tmp = p_data;
@@ -100,23 +128,6 @@ void			*change_pv(void *p_data)
 		}
 		ft_printf("%d\n-----\n", start_time + TIMEOUT - time(NULL));
 	}
-	if (!((t_data *)p_data)->shared->death)
-		ft_printf("Now, it is time... To DAAAAAAAANCE !!!\n");
-	tmp = p_data;
-	i = 0;
-	clear_win(((t_data *)tmp)->shared->env);
-	destroy_stick(((t_data *)tmp)->shared->stick);
-	while (i < NB_PHIL)
-	{
-		if (!((t_data *)p_data)->shared->death)
-			((t_data *)tmp)->action = 5;
-		print_philo((t_data *)tmp);
-		display_philo((t_data *)tmp);
-		tmp += sizeof(t_data);
-		i++;
-	}
-
-	mlx_loop(((t_data *)p_data)->shared->env->mlx);
-	exit(0);
+	quit_program(p_data);
 	return (NULL);
 }
