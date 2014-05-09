@@ -6,11 +6,13 @@
 /*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/06 14:46:33 by rbenjami          #+#    #+#             */
-/*   Updated: 2014/05/06 14:56:19 by rbenjami         ###   ########.fr       */
+/*   Updated: 2014/05/09 13:30:47 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdarg.h>
 #include <stdio.h>
+#include "libft.h"
 
 int		error(const char *msg, ...)
 {
@@ -29,12 +31,10 @@ int		error(const char *msg, ...)
 			else if (*msg == 's')
 				ft_putstr_fd(va_arg(ap, char*), 2);
 			else if (*msg == 'd')
-				ft_putnbr_fd(va_arg(ap, int), 2);
-			else if (*msg == 'p')
-				perror(va_arg(ap, const char*));
+				ft_putnbr_base_fd(va_arg(ap, int), 10, 2);
 		}
 		else
-			ft_putcolored_char(*msg, 1);
+			ft_putchar_fd(*msg, 2);
 		msg++;
 	}
 	va_end(ap);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 13:22:22 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 17:50:08 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/09 16:34:20 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,15 @@ void	join_phil(pthread_t phil[])
 	}
 }
 
-void	destroy_stick(t_data data[])
+void	destroy_stick(pthread_mutex_t stick[])
 {
 	int		i;
 
 	i = 0;
 	while (i < NB_PHIL)
 	{
-		if (pthread_mutex_destroy(&(data[i].shared->stick[i])) != 0)
+		pthread_mutex_unlock(&(stick[i]));
+		if (pthread_mutex_destroy(&(stick[i])) != 0)
 		{
 			ft_printf("\n Mutex Destroyed \n");
 			exit(1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/01 12:33:55 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/08 18:47:22 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/09 16:48:33 by rbenjami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,20 @@
 
 # define NB_PHIL 7
 # define MAX_LIFE 15
-# define EAT_T 3
-# define REST_T 3
-# define THINK_T 2
-# define TIMEOUT 200
+# define EAT_T 5
+# define REST_T 5
+# define THINK_T 5
+# define TIMEOUT 1000
 # define IS_BUSY 16
 # define WAITING 3
 # define EAT 2
 # define THINK 1
 # define REST 0
 
+# define WIN_H 200
+# define WIN_W 900
+
+# include <mlx.h>
 # include "struct.h"
 
 /*
@@ -46,11 +50,16 @@ void	*change_pv(void *p_data);
 */
 void	create_phil(pthread_t phil[], t_shared *shared, t_data data[]);
 void	join_phil(pthread_t phil[]);
-void	destroy_stick(t_data data[]);
+void	destroy_stick(pthread_mutex_t stick[]);
 
 /*
 **	philo
 */
 void	*func(void *p_data);
+
+/*
+**	textures
+*/
+void	add_texture(t_env *env, char *tex_path);
 
 #endif
