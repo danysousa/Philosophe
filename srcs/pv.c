@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 13:12:29 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/09 17:29:55 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/10 14:48:39 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void		print_philo(t_data *data)
 static void		display_philo(t_data *data)
 {
 	t_env			*e;
+	char			*tmp;
 	static char		tb[6][7] = {TB_ACTION};
 	static char		name[7][8] = {TB_NAME};
 
@@ -40,8 +41,10 @@ static void		display_philo(t_data *data)
 		128 * data->n, 10);
 	mlx_string_put(e->mlx, e->win, 128 * data->n, 150, 0xFFFFFF, name[data->n]);
 	mlx_string_put(e->mlx, e->win, 128 * data->n, 170, 0xFFFFFF, "-PV: ");
+	tmp = ft_itoa(data->life);
 	mlx_string_put(e->mlx, e->win, 40 + 128 * data->n, 170, 0xFFFFFF, \
-		ft_itoa(data->life));
+		tmp);
+	free(tmp);
 	mlx_string_put(e->mlx, e->win, 128 * data->n, 185, 0xFFFFFF, "-Action: ");
 	mlx_string_put(e->mlx, e->win, 60 + 128 * data->n, 185, 0xFFFFFF, \
 		tb[data->action]);
