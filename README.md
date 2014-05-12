@@ -4,3 +4,5 @@
 ######## Auteur:
 * Dany Sousa
 * Benjamin Repingon
+
+Une application du célèbre problème des philosophes.
