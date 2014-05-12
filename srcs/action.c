@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/08 12:33:44 by dsousa            #+#    #+#             */
-/*   Updated: 2014/05/09 16:58:07 by dsousa           ###   ########.fr       */
+/*   Updated: 2014/05/08 18:38:21 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,29 @@ void	waiting(t_data *data)
 	data->action = WAITING;
 	sleep(1);
 	tb_fct[choose_action(data)](data);
+}
+
+int		save_friend(t_data *data)
+{
+	int		prev;
+	int		next;
+	int		tmp;
+
+	tmp = data->shared->warning_nb[0];
+	if (data->n == data->shared->warning_nb[1] || data->n == tmp)
+		return (42);
+	tmp = data->shared->warning_nb[0];
+	prev = tmp - 1 == (-1) ? 6 : tmp - 1;
+	next = (tmp + 1) % 7;
+	if (data->n == next || data->n == prev)
+		return (REST);
+	tmp = data->shared->warning_nb[1];
+	prev = tmp - 1 == (-1) ? 6 : tmp - 1;
+	next = (tmp + 1) % 7;
+	if (data->n == next || data->n == prev)
+		return (REST);
+	else
+		return (42);
 }
 
 int		choose_action(t_data *data)

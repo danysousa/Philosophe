@@ -6,7 +6,7 @@
 #    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/26 13:13:47 by rbenjami          #+#    #+#              #
-#    Updated: 2014/05/09 17:29:58 by dsousa           ###   ########.fr        #
+#    Updated: 2014/05/08 14:13:13 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,7 @@ SRC_DIR		=	srcs/
 FILES		=	$(NAME).c \
 				action.c \
 				pv.c \
-				thread.c \
-				textures.c \
-				save_friend.c \
-				clear.c
+				thread.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(FILES))
 
@@ -55,7 +52,7 @@ libft.a:		libft/$(OBJ_LIB) $(HEAD_LIB)
 	@make -C libft
 
 $(NAME):		$(OBJ)
-	@$(CC) $(CFLAGS) -ltermcap -o $(NAME) $(OBJ) $(LIB) -lmlx -lXext -lX11 -L/usr/X11/lib
+	@$(CC) $(CFLAGS) -ltermcap -o $(NAME) $(OBJ) $(LIB)
 	@echo ""
 	@echo "\033[33m"compilation of $(NAME) : "\033[32m"Success"\033[0m"
 

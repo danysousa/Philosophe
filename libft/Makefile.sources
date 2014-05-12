@@ -19,10 +19,5 @@ SRC_LIB		=	ft_putstr.c			\
 				ft_putmem.c			\
 				ft_putnbr_base.c	\
 				exit_error.c		\
-				error.c				\
 				ft_printf.c			\
-				ft_itoa.c			\
-				ft_strnew.c			\
-				ft_memalloc.c		\
-				ft_bzero.c			\
 				argv_option.c

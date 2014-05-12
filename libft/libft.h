@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbenjami <rbenjami@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/04/28 16:27:32 by rbenjami          #+#    #+#             */
-/*   Updated: 2014/05/09 15:49:21 by rbenjami         ###   ########.fr       */
+/*   Updated: 2014/05/08 14:15:33 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,12 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strstr(const char *str, const char *find);
 char		*ft_strncpy(char *dest, const char *src, size_t n);
 
-char		*ft_itoa(int n);
-void		*ft_memalloc(size_t size);
-char		*ft_strnew(size_t size);
-void		ft_bzero(void *s, size_t n);
-
 void		ft_putmem(void *adr);
 void		ft_putnbr_base(int n, size_t base);
 void		ft_putnbr_base_fd(int n, size_t base, int fd);
 int			argv_option(const char *argv[], char option);
 
 int			ft_printf(const char *msg, ...);
-int			error(const char *msg, ...);
 void		exit_error(char *error);
 
 #endif
